@@ -1,0 +1,107 @@
+.find-flatmate-body{
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+.search-flatmate-div{
+    flex:1.1;
+    height: 100%; 
+    /* position: fixed;    */
+}
+
+.Flatmate-card-div{
+    flex: 4;
+    display: flex;
+    height: 100%;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5%;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures alignment */
+    width: 100%;
+    max-width: 400px; /* Adjust width as needed */
+}
+
+.filter-label {
+    flex: 1;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.filter-choices {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust spacing between Yes and No */
+}
+
+.custom-radio input {
+    display: none;
+  }
+
+  .radio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; 
+    background-color: #f5f5f5;  
+    border: 2px solid #ccc;  
+    border-radius: 30px;  
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .radio-btn:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+  }
+
+  .custom-radio input:checked + .radio-btn {
+    background-color: #7D141D;  /* Your color scheme */
+    color: white;
+    border-color: #7D141D;
+    box-shadow: 0 0 10px rgba(125, 20, 29, 0.7); 
+  }
+
+  .radio-btn, .radio-btn:hover {
+    transition: all 0.3s ease;
+  }
+
+.filter-choices label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.filter-row input[type="checkbox"] {
+    accent-color: #7D141D;
+    cursor: pointer;
+}
+/* Ensures flatmate cards are displayed in a proper grid */
+.flatmate-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr)); /* 2 columns */
+    gap: 20px 30px; /* Reduced row gap, increased column gap */
+    padding: 20px;
+    width: 100%;
+    align-items: start;
+    justify-content: center; /* Keeps it centered */
+    height: 100%;
+    overflow-y: auto;
+}
+
+.flatmate-cards-container > *:nth-child(odd) {
+    margin-left: 80px; /* Pushes the first column right */
+}
+
+/* Keeps all flatmate cards at the same height */

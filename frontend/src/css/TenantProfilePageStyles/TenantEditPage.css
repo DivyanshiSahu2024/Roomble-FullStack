@@ -1,0 +1,180 @@
+
+.tenant-edit-container {
+    /* max-width: 800px; */
+    /* height: 600px; */
+    max-width: 1100px;
+    /* height: 600px; */
+    height: auto;
+    margin: 20px auto;
+    padding: 20px;
+    padding-left: 60px;
+    /* padding-right: 60px; */
+    /* background-color: #f9f9f9; */
+    background-color: #FDE6E8;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Section */
+  .tenant-edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 680px; */
+  }
+  
+  .tenant-edit-profile {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .tenant-edit-profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid #ae3c42;
+    transition: transform 0.3s ease;
+  }
+
+  .tenant-edit-profile-img:hover {
+    transform: scale(1.05);
+  }
+  
+  #tenant-edit-image-upload {
+    display: none;
+  }
+  
+  .tenant-edit-btn {
+    background: #ae3c42;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Form Section */
+  .tenant-edit-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .tenant-edit-info{
+    margin-bottom : 20px;
+  }
+  
+  .tenant-edit-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Proper spacing between inputs */
+    color: #7d141d
+  }
+  
+  .tenant-edit-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Proper spacing between inputs */
+    color: #7d141d;
+  }
+  
+  /* Align Alcohol, Veg, and Pets options properly */
+  .tenant-edit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .tenant-edit-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .tenant-edit-choices-smoke {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 120px;
+  }
+  .tenant-edit-choices-veg {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 145px;
+  }
+  .tenant-edit-choices-pets {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 140px;
+  }
+  .tenant-edit-choices-flatmate {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 83px;
+  }
+  
+  .tenant-edit-choices button {
+    padding: 6px 10px;
+    border: none;
+    background: #FFC5CB;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 108px; /* Make buttons smaller */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tenant-edit-choices .active {
+    background: #ae3c42;
+  }
+  
+  .tenant-edit-left select {
+    width: auto;
+    height: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ae3c42;
+    padding: 5px;
+  }
+  
+  .tenant-edit-left input {
+    width: auto;
+    height: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ae3c42;
+    padding: 5px;
+  }
+  
+  .tenant-edit-right select {
+    width: auto;
+    height: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ae3c42;
+    padding: 5px;
+  }
+  
+  .tenant-edit-right input {
+    width: auto;
+    height: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ae3c42;
+    padding: 5px;
+  }
+  /* Brief Intro Section */
+  .tenant-edit-right textarea {
+    width: auto;
+    height: 148px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ae3c42;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ae3c42;
+    resize: none;
+  }
+  

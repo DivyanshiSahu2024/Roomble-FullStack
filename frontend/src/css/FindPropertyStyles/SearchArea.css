@@ -1,0 +1,173 @@
+.search-prop-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #FDE6E8;
+    height: 100%;
+    overflow: auto;
+}
+
+.search-prop-searchbar{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    input{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        flex:1;
+    }
+
+}
+
+.city-search-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    gap:5px;
+}
+
+.city-search-container label{
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.city-search-container select{
+    border:2px solid #7D141D;
+    outline: none;
+    height: 35px;
+    border-radius: 10px;
+    padding:0;
+}
+
+.locality-search-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    gap:5px;
+}
+
+.locality-search-container label{
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.locality-search-container select{
+    border:2px solid #7D141D;
+    outline: none;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.price-range-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+
+.area-range-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+
+.range-slider__range {
+    background-color: #7D141D !important;  /* Maroon fill */
+}
+
+.range-slider__thumb {
+    background-color: #7D141D !important;  /* Maroon handle */
+    border: 2px solid #7D141D !important;
+}
+
+.range-slider__thumb:focus,
+.range-slider__thumb:hover {
+    box-shadow: 0 0 0 8px rgba(128, 0, 0, 0.3);  /* Light maroon glow */
+}
+
+
+.BHK-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5%;
+}
+
+label {
+    white-space: nowrap; /* Prevents wrapping */
+    display: flex;
+    align-items: center;
+}
+
+.BHK-checkbox{
+    display: flex;
+    align-items: center;
+
+}
+
+.BHK-container label{
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+input[type="checkbox"] {
+    accent-color: #7D141D; /* Changes the tick mark color */
+}
+
+.search-prop-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin: 10px;
+}
+
+.search-prop-buttons button{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #7D141D;
+    color: white;
+    font-size: 1rem;
+}
+
+.search-prop-buttons button:hover{
+    background-color: #A4161A;
+}
+
+.search-prop-buttons button:active{
+    transform: scale(0.9);
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.filter-label {
+    width: 120px; /* Adjust label width to match Yes/No */
+   
+}
+
+.filter-choices {
+    display: flex;
+    gap: 15px; /* Adjust spacing between checkboxes */
+}
+
+.filter-choices label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between checkbox and text */
+}
+
+.locality-error-message{
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-left: 5%;
+}

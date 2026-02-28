@@ -1,0 +1,111 @@
+.landlord-edit-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #fde6e8;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.landlord-edit-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.image-wrapper {
+  cursor: pointer;
+}
+
+.landlord-edit-profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ae3c42;
+  transition: transform 0.3s ease;
+}
+
+.landlord-edit-profile-img:hover {
+  transform: scale(1.05);
+}
+
+#image_input {
+  display: none;
+}
+
+.landlord-edit-info h2 {
+  margin: 0;
+  color: #ae3c42;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.landlord-edit-info p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 16px;
+}
+
+.landlord-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #7d141d;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1px solid #ae3c42;
+  border-radius: 8px;
+  background-color: white;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #7d141d;
+  outline: none;
+}
+
+.landlord-edit-btn {
+  background-color: #ae3c42;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: center;
+  width: 200px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.landlord-edit-btn:hover {
+  background-color: #922f36;
+  transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+  .landlord-edit-container {
+    padding: 20px;
+  }
+
+  .landlord-edit-btn {
+    width: 100%;
+  }
+}

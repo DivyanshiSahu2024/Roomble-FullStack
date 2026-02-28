@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700');
+
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.login-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;  
+    background-color: white;   
+    padding: 40px 30px;
+    gap: 20px;
+}
+
+.login-logo-container {
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: auto; */
+    margin-right: -45px;
+    margin-top: -80px;
+    /* width: 200px; */
+}
+
+.login-logo-container img {
+    margin-right: 25px;
+}
+
+.login-login-box {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#FDE6E8;
+    gap: 5px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0;    
+    box-sizing: border-box;
+    padding: 30px 40px;
+}
+
+.login-login-title {
+    margin-top: 0;
+    color:black;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.login-subtext {
+    margin-top: 0;
+    font-size: 18px;
+    color: #7a4949;
+    margin-bottom: 25px;
+}
+
+.login-user-type-buttons {
+    display: flex;  /* Ensure it's using flexbox */
+    justify-content: center;  /* Center the buttons horizontally */
+    gap: 20px;  /* Add some space between the buttons */
+    margin-bottom: 0;  /* Add margin to the bottom if needed */
+}
+
+.login-user-btn {
+    margin: 0 30px;
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7B1212;
+    border: 2px solid #7B1212;
+    background: linear-gradient(135deg, #fff, #f2f2f2);
+    border-radius: 30px; 
+    cursor: pointer;
+    transition: all 0.4s ease, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;  /* This is important */
+    flex-direction: column; /* Stack the image and text vertically */
+    align-items: center; /* Center both vertically and horizontally */
+    justify-content: center; /* Center the content */
+}
+
+.login-user-btn:hover {
+    background: linear-gradient(135deg, #F4B6B6, #E89A9A);
+    transform: translateY(-3px);
+}
+
+.login-user-btn:active {
+    background: linear-gradient(135deg, #d9d9d9, #f2f2f2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(1px);  /* Pressed-down effect */
+}
+
+.login-user-btn.selected {
+    background: linear-gradient(135deg, #7B1212, #a52a2a);
+    color: white;
+    border: 2px solid #a52a2a;
+    box-shadow: 0 10px 25px rgba(165, 42, 42, 0.4); /* Stronger glow effect for selected */
+    transform: translateY(-3px);
+}
+
+.login-login-button {
+    background: linear-gradient(135deg,#7B1212, #a52a2a);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 30px;          /* Softer corners */
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.4s ease, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-login-button:hover {
+    box-shadow: 0 10px 30px rgba(213, 55, 55, 0.4);
+    transform: translateY(-3px);
+}
+
+.login-login-button:active {
+    background: linear-gradient(135deg, #a52a2a, #d53737);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transform: translateY(1px);  /* Pressed-down effect */
+}
+
+.login-login-form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-login-form label {
+    display: block;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0.5 !important;
+}
+
+#login-email {
+    width: 420px;
+    height: 50px;
+    padding: 9px;
+    padding: 9px;
+    border: 2px solid #a84d4d;
+    border-radius: 5px;
+    background-color: #FDE6E8;
+    font-size: 16px;
+    margin-bottom: 20px !important;
+    padding: 9px !important;       /* Apply consistent padding */
+    line-height: 0.6 !important;     /* Ensures tight field alignment */
+    margin-bottom: 15px !important;  /* Space below the email field */
+}
+
+#login-password {
+    width: 420px;
+    height: 50px;
+    padding: 9px;
+    border: 2px solid #a84d4d;
+    border-radius: 5px;
+    background-color: #FDE6E8;
+    font-size: 16px;
+    margin-bottom: 20px !important;
+    padding: 9px !important;       /* Apply consistent padding */
+    line-height: 0.6 !important;     /* Ensures tight field alignment */
+}
+
+.login-remember-forgot {
+    display: flex;
+    align-items: center;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.login-remember-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.login-remember-label {
+    font-size: 16px !important;
+    font-weight: bold;
+    transform: translateY(-190%) !important;
+    padding-left: 5px;
+}
+
+.login-remember-container input[type="checkbox"] {
+    accent-color: #ae3c42;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transform: translateY(-15px);
+    margin: 0;
+}
+
+.login-remember-container input[type="checkbox"] :unchecked{
+    color : white;
+    background-color: white;
+    accent-color: white;
+}
+
+.login-forgot-password {
+    color: #a52a2a;
+    text-decoration: none;
+    font-size: 14px;
+    transform: translateY(-15px);
+    font-weight: normal;
+    margin-left: auto;
+    position: relative;
+    display: inline-block; /* Needed for ::after to align properly */
+}
+
+.login-forgot-password::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Start from the center */
+    bottom: -2px;
+    width: 0; /* Initially hidden */
+    height: 2px;
+    background-color: #a52a2a;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.login-forgot-password:hover::after {
+    width: 100%; /* Expands fully */
+    left: 0; /* Moves outward from the center */
+}
+
+
+.login-register-text {
+    color: black;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.login-register-text a {
+    color: #a52a2a;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: #d61515;
+}
+
+.login-register-text a {
+    color: #a52a2a;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.login-register-text a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #a52a2a;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.login-register-text a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+.login-footer-text {
+    margin-top: 20px;
+    margin-bottom: -5px;
+    font-size: 20px;
+    color: #a52a2a;
+    font-weight: bold;
+}
+
+.login-page-box {
+    background: #ffe6e6; /* Soft pink */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Input Fields */
+.login-page-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d9534f;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page-input:focus {
+    border-color: #c9302c;
+    box-shadow: 0 0 8px rgba(217, 83, 79, 0.5);
+}
+
+/* Login Button */
+.login-page-button {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-page-button:hover {
+    background: linear-gradient(135deg, #b52b27, #c9302c);
+    transform: scale(1.05);
+}
+
+/* Toggle Switch */
+.login-page-toggle-switch {
+    background: #d9534f;
+    border-radius: 20px;
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.login-page-toggle-switch:hover {
+    background: #c9302c;
+}
+
+/* Footer Text */
+.login-page-footer-text {
+    color: #c9302c;
+    font-weight: bold;
+    font-size: 14px;
+}
+

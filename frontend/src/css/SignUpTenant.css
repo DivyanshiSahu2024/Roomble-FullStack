@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700');
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.signup-tenant-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;  
+    background-color: white;   
+    padding: 40px 30px;
+    gap: 0px;
+    position: relative;
+}
+
+
+.signup-tenant-box {
+  width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#FDE6E8;
+    gap: 5px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0;    
+    box-sizing: border-box;
+    padding: 30px 90px;
+}
+
+/* Form Styling */
+.signup-tenant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Smooth Step Transition */
+.signup-tenant-step {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.step-1 .signup-tenant-step,
+.step-2 .signup-tenant-step {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Title Styling */
+.signup-tenant-title {
+    text-align: center;
+    margin-top: 0;
+    color:black;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+/* Label Styling */
+.signup-tenant-form label {
+    display: block;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Input Box Styling */
+.signup-tenant-input-box {
+  width: 420px;
+  height: 50px;
+  padding: 9px;
+  border: 2px solid #a84d4d;
+  border-radius: 5px;
+  background-color: #FDE6E8;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding: 9px;
+  line-height: 0.6;
+}
+
+.signup-tenant-input-box:focus {
+  border: 2px solid #ae3c42;
+  outline: none;
+  box-shadow: 0 0 12px rgba(174, 60, 66, 0.3);
+}
+
+/* Radio Button Group Styling */
+.signup-tenant-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.signup-tenant-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.signup-tenant-radio {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ae3c42;
+}
+
+/* Button Styling */
+.signup-tenant-button {
+  background: linear-gradient(135deg,#7B1212, #a52a2a);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 20px;
+  border-radius: 30px;          /* Softer corners */
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.4s ease, box-shadow 0.3s;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-tenant-button:hover {
+  box-shadow: 0 10px 30px rgba(213, 55, 55, 0.4); /* Glow on hover */
+  transform: translateY(-3px);  /* Slight lift effect */
+}
+
+.signup-tenant-button:active {
+  background: linear-gradient(135deg, #a52a2a, #d53737);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(1px);  /* Pressed-down effect */
+}
+
+/* Navigation Buttons */
+.signup-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.signup-navigation-buttons .signup-tenant-button {
+  width: 48%;
+}
+
+/* Footer Text */
+.signup-tenant-footer-text-signup {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ae3c42;
+  margin-top: 20px;
+}
+
+/* Error & Success Messages */
+.signup-tenant-error-password,
+.signup-tenant-error-confirm-password {
+  font-size: 13px;
+  color: red;
+  font-weight: 500;
+  margin-top: -10px;
+}
+
+.signup-tenant-success-message {
+  font-size: 14px;
+  color: green;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.signup-tenant-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.signup-tenant-choices-smoke {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 60px;
+}
+.signup-tenant-choices-veg {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 90px;
+}
+.signup-tenant-choices-pets {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 82px;
+}
+.signup-tenant-choices-flatmate {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 15px;
+}
+.signup-tenant-choices-gender {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 160px;
+}
+
+.signup-tenant-radio {
+  opacity: 0;  /* Make radio buttons invisible */
+    position: absolute;  /* Remove from layout */
+    pointer-events: none;  /* Prevent interaction */
+
+}
+
+
+.signup-tenant-smoke-btn,
+.signup-tenant-veg-btn,
+.signup-tenant-pets-btn,
+.signup-tenant-flatmate-btn,
+.signup-tenant-gender-btn {
+  display: flex;
+}
+
+.signup-tenant-choices button {
+  padding: 6px 10px;
+  border: none;
+  background: #FFC5CB;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+  width: 108px; /* Make buttons smaller */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signup-tenant-choices .active {
+  background: #ae3c42;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-tenant-box {
+    width: 90%;
+    padding: 20px;
+  }
+  .signup-tenant-input-box {
+    width: 100%;
+  }
+  .signup-tenant-button {
+    width: 100%;
+  }
+}
+
+.signup-tenant-error {
+  color: red;
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: 500;
+  text-align: center; 
+  width : 100%;
+}

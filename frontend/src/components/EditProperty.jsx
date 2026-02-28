@@ -1,0 +1,534 @@
+/**
+ * This component allows users to edit the details of an existing property listing.
+ * It includes a form for updating property information such as photos, description,
+ * BHK, area, rent, city, location, address, and amenities. Users can also select
+ * the property's location on a map.
+ */
+
+import React, { useEffect, useState, useContext } from "react";
+import DragAndDrop from "./AddPropertyComponents/DragAndDrop";
+import "../css/AddPropertyStyles/AddProperty.css";
+import { useParams, useNavigate } from "react-router-dom";
+import { Basecontext } from "../context/base/Basecontext";
+import config from "../config.json";
+import FadeInAnimation from "./animations/FadeInAnimation";
+import { toast } from "react-toastify";
+import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
+
+function EditProperty(property) {
+  // Context and state variables
+  const state = useContext(Basecontext);
+  const { user, setUser, fetuser } = state;
+  const [somethingwentwrong, setSomethingwentwrong] = useState(false);
+  const navigate = useNavigate();
+  const [selectedLocation, setSelectedLocation] = useState({
+    lat: 19.076,
+    lng: 72.8777,
+  });
+
+  
+
+  // Form state and validation
+  const initialFormState = {
+    photos: [],
+    description: "",
+    bhk: "",
+    area: "",
+    rent: "",
+    city: "",
+    town: "",
+    address: "",
+    amenities: "",
+    price: "",
+    lat: 19.076,
+    lng: 72.8777,
+  };
+  const [formData, setFormData] = useState(initialFormState);
+  const [images, setImages] = useState([]);
+  const [errors, setErrors] = useState({});
+  const params = useParams();
+  const id = params.id;
+
+  // Update form data
+  const updateFormData = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+   //validate photos
+   const validatePhotos = (imageArray) => {
+    if (imageArray.length === 0) {
+      setErrors((prev) => ({
+        ...prev,
+        photos: "At least one photo is required.",
+      }));
+    } else if (imageArray.length > 10) {
+      setErrors((prev) => ({
+        ...prev,
+        photos: "You can only upload a maximum of 10 images.",
+      }));
+    } else {
+      setErrors((prev) => {
+        const { photos, ...rest } = prev;
+        return rest;
+      });
+    }
+  };
+  
+
+  //validate BHK
+  const validateBHK= (value) => {
+    const BHK = Number(value);
+    if (!BHK || isNaN(BHK)){
+      setErrors((prev) => ({ ...prev, bhk: "BHK is required and must be a number." }));
+    }else if (!Number.isInteger(BHK) || BHK <= 0) {
+      setErrors((prev) => ({ ...prev, bhk: "BHK must be a positive integer." }));
+    }else{
+      setErrors((prev) => {
+        const { bhk, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  //validate area
+  const validateArea= (value) => {
+    const area = Number(value);
+    if (!area || isNaN(area)){
+      setErrors((prev) => ({ ...prev, area: "Area is required and must be a number." }));
+    }else if ( area <= 0 || area > 10000) {
+      setErrors((prev) => ({ ...prev, area: "Area must be in the range of 1 to 10,000." }));
+    }else{
+      setErrors((prev) => {
+        const { area, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  //validate rent
+  const validateRent= (value) => {
+    const rent = Number(value);
+    if (!rent || isNaN(rent)){
+      setErrors((prev) => ({ ...prev, rent: "Rent is required and must be a number." }));
+    } else if (rent <= 0 || rent > 100000) {
+      setErrors((prev) => ({ ...prev, rent: "Rent must be in the range of 1 to 100,000." }));
+    }else{
+      setErrors((prev) => {
+        const { rent, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  //validate address
+  const validateAddress= (value) => {
+    if (!value.trim()){
+      setErrors((prev) => ({ ...prev, address: "Address is required." }));
+    }else{
+      setErrors((prev) => {
+        const { address, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  //validate city
+  const validateCity= (value) => {
+    if (!value) {
+      setErrors((prev) => ({ ...prev, city: "City is required." }));
+    }else{
+      setErrors((prev) => {
+        const { city, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  //validate location
+  const validateLocation= (value) => {
+    if (!value){
+      setErrors((prev) => ({ ...prev, location: "Location is required." }));
+    }else{
+      setErrors((prev) => {
+        const { location, ...rest } = prev;
+        return rest;
+      });
+    }
+  }
+
+  useEffect(() => {
+      validatePhotos(images); // Validate photos whenever images change
+    }, [images]);
+
+  // Validate form inputs
+  const validateForm = () => {
+    let newErrors = {};
+
+    // Validate required fields
+    if (images.length === 0){
+      newErrors.photos = "At least one photo is required.";
+    }else if(images.length > 10){
+      newErrors.photos = "You can only upload a maximum of 10 images.";
+    }else{
+      delete newErrors.photos;
+    }
+    const BHK = Number(formData.bhk);
+    if (!formData.bhk || isNaN(BHK)){
+      newErrors.bhk = "BHK is required and must be a number.";
+    }else if (!Number.isInteger(BHK) || BHK <= 0) {
+      newErrors.bhk = "BHK must be a positive integer.";
+    }else{
+      delete newErrors.bhk;
+    }
+    const area = Number(formData.area);
+    const rent = Number(formData.price);
+    if (!formData.area || isNaN(area)){
+      newErrors.area = "Area is required and must be a number.";
+    }else if ( area <= 0 || area > 10000) {
+      newErrors.area = "Area must be in the range of 1 to 10,000.";
+    }else{
+      delete newErrors.area;
+    }
+    if (!formData.price || isNaN(rent)){
+      newErrors.rent = "Rent is required and must be a number.";
+    } else if (rent <= 0 || rent > 100000) {
+      newErrors.rent = "Rent must be in the range of 1 to 100,000.";
+    }else{
+      delete newErrors.rent;
+    }
+    if (!formData.address.trim()){
+       newErrors.address = "Address is required."
+      }else{
+        delete newErrors.address;
+      }
+    if (!formData.city) {
+      newErrors.city = "city is required.";
+    }else{
+      delete newErrors.city;
+    }
+    if (!formData.town) {
+       newErrors.location = "location is required.";
+    }else{
+      delete newErrors.location;
+    }
+
+    setErrors(newErrors); // Update errors state
+    return Object.keys(newErrors).length === 0; // Return true if no errors
+  };
+
+  // Handle form submission
+  const handleUpdate = async () => {
+    if (!validateForm()) return;
+
+    const formData_final = new FormData();
+    formData_final.append("description", formData.description);
+    formData_final.append("bhk", formData.bhk);
+    formData_final.append("area", formData.area);
+    formData_final.append("price", formData.price);
+    formData_final.append("city", formData.city);
+    formData_final.append("town", formData.town);
+    formData_final.append("address", formData.address);
+    formData_final.append("amenities", formData.amenities);
+    formData_final.append("id", id);
+    formData_final.append("lat", selectedLocation.lat);
+    formData_final.append("lng", selectedLocation.lng);
+
+    images.forEach((image) => {
+      if (image.file) {
+        formData_final.append("image", image.file);
+      }
+    });
+
+    try {
+      const response = await fetch(
+        `${config.backend}/api/updates/updateProperty`,
+        {
+          method: "POST",
+          headers: {
+            authtoken: localStorage.getItem("authtoken"),
+          },
+          body: formData_final,
+        }
+      );
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Property updated successfully!");
+        navigate("/landlord-profile-page");
+      } else {
+        setSomethingwentwrong(true);
+      }
+    } catch (error) {
+      console.error("Error updating property:", error);
+      setSomethingwentwrong(true);
+    }
+  };
+
+  // Fetch property details on component mount
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const response = await fetch(
+          `${config.backend}/api/property/get_property`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: id }),
+          }
+        );
+        const data = await response.json();
+
+        if (data.success) {
+          setFormData(data.property);
+          setImages([]);
+          setSelectedLocation({
+            lat: data.property.lat,
+            lng: data.property.lng,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        setSomethingwentwrong(true);
+      }
+    };
+    fetchProperty();
+  }, []);
+
+  // Handle errors
+  useEffect(() => {
+    if (localStorage.getItem("authtoken") === null) {
+      navigate("/login"); // Redirect to login if not authenticated
+    }
+    if (somethingwentwrong) {
+      toast.error("Something went wrong. Please try again later.");
+      navigate(-1);
+    }
+  }, [somethingwentwrong]);
+
+  // Handle map click to update location
+  const handleMapClick = (event) => {
+    setSelectedLocation({
+      lat: event.detail.latLng.lat,
+      lng: event.detail.latLng.lng,
+    });
+  };
+
+  return (
+    <div className="add-prop-container">
+      {/* Top section */}
+      <div className="add-prop-top">
+        <h4 style={{ color: "#7D141D", fontSize: "20px", fontWeight: "bold" }}>
+          Add Property
+        </h4>
+        <div className="input-top">
+          {/* Photo upload */}
+          <div className={"form-item upload-container"}>
+            <FadeInAnimation>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <h4 style={{ color: "#7D141D" }}>Upload Photos *</h4>
+                {errors.photos && (
+                  <p className="addProp-form-error">{errors.photos}</p>
+                )}
+              </div>
+              <DragAndDrop
+                images={images}
+                setImages={setImages}
+                updateFormData={updateFormData}
+              />
+            </FadeInAnimation>
+          </div>
+
+          {/* Description */}
+          <div className={"form-item description-container"}>
+            <FadeInAnimation>
+              <h4 style={{ color: "#7D141D" }}>Description</h4>
+              <textarea
+                value={formData.description}
+                onChange={(e) => {updateFormData("description", e.target.value)}}
+                placeholder="Enter Description"
+              />
+            </FadeInAnimation>
+          </div>
+        </div>
+      </div>
+
+      {/* Middle section */}
+      <div className="add-prop-middle">
+        {/* BHK */}
+        <div className={"form-item bhk-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>BHK *</h4>
+            <input
+              value={formData.bhk}
+              onChange={(e) => {updateFormData("bhk", e.target.value);
+                validateBHK(e.target.value);
+              }}
+              placeholder="Enter BHK"
+            />
+            {errors.bhk && <p className="addProp-form-error">{errors.bhk}</p>}
+          </FadeInAnimation>
+        </div>
+
+        {/* Area */}
+        <div className={"form-item Area-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>Area(sqft) *</h4>
+            <input
+              value={formData.area}
+              onChange={(e) => {updateFormData("area", e.target.value);
+                validateArea(e.target.value);
+              }}
+              placeholder="Enter Area"
+            />
+            {errors.area && <p className="addProp-form-error">{errors.area}</p>}
+          </FadeInAnimation>
+        </div>
+
+        {/* Rent */}
+        <div className={"form-item Rent-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>Rent(Per Month) *</h4>
+            <input
+              value={formData.price}
+              onChange={(e) => {updateFormData("price", e.target.value);
+                validateRent(e.target.value);
+              }}
+              placeholder="Enter Rent"
+            />
+            {errors.rent && <p className="addProp-form-error">{errors.rent}</p>}
+          </FadeInAnimation>
+        </div>
+
+        {/* City */}
+        <div className={"form-item City-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>City *</h4>
+            <select
+              value={formData.city}
+              onChange={(e) => {
+                const selectedCity = e.target.value;
+                updateFormData("city", e.target.value)
+                if (selectedCity === "") {
+                  updateFormData("town", ""); // Reset locality if city is cleared
+                  setErrors((prev) => ({
+                    ...prev,
+                    location: "Please select a city before choosing locality",
+                  }));
+                } else {
+                  setErrors((prev) => ({
+                    ...prev,
+                    location: "", // Clear location error if any
+                  }));
+                }
+                validateCity(e.target.value);
+              }}
+            >
+              <option value="">Select City</option>
+              <option value="Mumbai">Mumbai</option>
+            </select>
+            {errors.city && <p className="addProp-form-error">{errors.city}</p>}
+          </FadeInAnimation>
+        </div>
+
+        {/* Location */}
+        <div className={"form-item Location-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>Location *</h4>
+            <select
+              value={formData.town}
+              onMouseDown={(e) => {
+                if (!formData.city) {
+                  e.preventDefault(); //  prevents the dropdown from opening
+                  setErrors((prev) => ({
+                    ...prev,
+                    location: "Please select a city before choosing locality",
+                  }));
+                }
+              }}
+              onChange={(e) => {updateFormData("town", e.target.value);
+                validateLocation(e.target.value);
+              }}
+            >
+              <option value="">Select Location</option>
+              <option value="Andheri">Andheri</option>
+              <option value="Bandra">Bandra</option>
+              <option value="Juhu">Juhu</option>
+              <option value="Malad">Malad</option>
+              <option value="Kandivali">Kandivali</option>
+              <option value="Borivali">Borivali</option>
+              <option value="Dahisar">Dahisar</option>
+              <option value="Mira Road">Mira Road</option>
+              <option value="Thane">Thane</option>
+              <option value="Goregaon">Goregaon</option>
+            </select>
+            {errors.location && (
+              <p className="addProp-form-error">{errors.location}</p>
+            )}
+          </FadeInAnimation>
+        </div>
+      </div>
+
+      {/* Bottom section */}
+      <div className="add-prop-bottom">
+        {/* Address */}
+        <div className={"form-item Address-container"}>
+          <FadeInAnimation>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <h4 style={{ color: "#7D141D" }}>Address *</h4>
+              {errors.address && (
+                <p className="addProp-form-error">{errors.address}</p>
+              )}
+            </div>
+            <textarea
+              value={formData.address}
+              onChange={(e) => updateFormData("address", e.target.value)}
+              placeholder="Enter Address"
+            />
+          </FadeInAnimation>
+        </div>
+
+        {/* Amenities */}
+        <div className={"form-item Amenities-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>Amenities</h4>
+            <textarea
+              value={formData.amenities}
+              onChange={(e) => updateFormData("amenities", e.target.value)}
+              placeholder="Enter Amenities"
+            />
+          </FadeInAnimation>
+        </div>
+
+        {/* Map for location selection */}
+        <div className={"form-item Amenities-container"}>
+          <FadeInAnimation>
+            <h4 style={{ color: "#7D141D" }}>Pick the location on Maps</h4>
+            <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+              <div className="maps_box">
+                <Map
+                  defaultCenter={selectedLocation}
+                  defaultZoom={10}
+                  mapId={"a2e98f7c917411dc"}
+                  onClick={handleMapClick}
+                >
+                  <AdvancedMarker position={selectedLocation} />
+                </Map>
+              </div>
+            </APIProvider>
+          </FadeInAnimation>
+        </div>
+
+        {/* Submit button */}
+        <button className="Form-Submit-btn" onClick={handleUpdate}>
+          Submit
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default EditProperty;

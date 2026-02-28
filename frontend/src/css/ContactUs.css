@@ -1,0 +1,142 @@
+.team-container {
+  padding: 40px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background: #fdf6f7;
+}
+
+.team-heading {
+  text-align: center;
+  font-size: 38px;
+  color: #8b1e2f;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.team-card {
+  width: 300px;
+  background: rgba(253, 230, 232, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  width: 300px;
+  margin: 20px;
+}
+
+.team-card:hover {
+  transform: scale(1.04);
+  background: #b74353;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-image-wrapper {
+  width: 160px;
+  height: 160px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #8b1e2f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.team-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.team-name {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.team-card:hover .team-name {
+  color: white;
+}
+
+.team-role {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.team-card:hover .team-role {
+  color: #f0e6e6;
+}
+
+.team-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #8b1e2f;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.team-contact i {
+  font-size: 1rem;
+  color: #8b1e2f;
+  transition: color 0.2s ease-in-out;
+}
+
+.team-contact::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+
+.team-card:hover .team-contact {
+  color: white;
+}
+
+.team-card:hover .team-contact i{
+  color: white;
+}
+
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.team-card {
+  /* Add these two lines */
+  opacity: 0;
+  animation: fadeInZoom 0.5s ease-out forwards;
+}

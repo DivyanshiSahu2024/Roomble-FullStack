@@ -1,0 +1,128 @@
+.landlord-dashboard-container {
+  min-height: 100vh;
+  padding: 50px 60px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.landlord-dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.landlord-dashboard-header h1 {
+  font-size: 36px;
+  color: #7d141d;
+  font-weight: bold;
+}
+
+.landlord-dashboard-underline {
+  width: 80px;
+  height: 4px;
+  background-color: #ae3c42;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.landlord-dashboard-loading-text,
+.landlord-dashboard-no-properties {
+  font-size: 22px;
+  color: #7d141d;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.landlord-dashboard-property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 30px;
+  margin-top: 10px;
+}
+
+/* Property Card Styling (still assuming it's styled separately) */
+.property-card {
+  background-color: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(173, 48, 52, 0.18);
+}
+
+.pop-animate {
+  animation: pop 0.3s ease-in-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.landlord-dashboard-empty-state {
+  text-align: center;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #7d141d;
+}
+
+.landlord-dashboard-empty-image {
+  width: 160px;
+  height: 160px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.landlord-dashboard-empty-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.landlord-dashboard-empty-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 400px;
+  color: #333;
+}
+
+.landlord-dashboard-no-properties-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* or adjust as needed */
+  width: 100%;
+}
+
+.landlord-dashboard-no-properties {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landlord-dashboard-empty-message {
+  animation: fadeSlideUp 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+  transform: translateY(10px);
+}

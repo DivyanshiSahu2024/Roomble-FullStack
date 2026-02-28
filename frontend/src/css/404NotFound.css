@@ -1,0 +1,93 @@
+.not-found-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background: linear-gradient(135deg, #fde6e8, #ffffff);
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+  
+  .not-found-left, .not-found-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  .not-found-left {
+    text-align: center;
+    animation: slideInLeft 0.8s ease-in-out;
+  }
+  
+  .not-found-code {
+    font-size: 130px;
+    font-weight: bold;
+    color: #8b1e2f;
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .not-found-message {
+    font-size: 32px;
+    font-weight: 700;
+    color: #8b1e2f;
+    margin-bottom: 20px;
+  }
+  
+  .not-found-description {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 35px;
+    max-width: 400px;
+  }
+  
+  .not-found-home-button {
+    padding: 12px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: #8b1e2f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(139, 30, 47, 0.4);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .not-found-home-button:hover {
+    background-color: #a83647;
+    transform: scale(1.05);
+  }
+  
+  .not-found-right {
+    animation: fadeIn 1s ease;
+  }
+  
+  .not-found-lottie {
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
